@@ -4,7 +4,6 @@
 2. Keyword "Covid-19" + "economy" (or something similar)
 ---
 # Summary
-
 Urls are stored in text files denoting which file I found them in. I did this in a bit of an unconventional manner meaning I had to directly download some files. I used the second and third .war.wat file in the NOV/DEC 2020 bucket, I had 57 and 608 hits respectively. I would have run it on a third file to get 1000 links but I was pressed for time. I didn't automatically download the files and search through them due to issues described below -- long story short I believe environment variables are from hell..
 To extract the URLS I extracted the JSON descriptions of the pages from the .warc.wat files and them passed them to extractURLS.py.
 This bit of code, recursively traverses the JSON file, if any urls matched the keywords specified in go.py they were added to a list an exported. I searched based on covid and the economy seperately (to maximize my chance of getting a hit) and then took the intersection of those.
