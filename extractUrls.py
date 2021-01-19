@@ -6,19 +6,16 @@ import json
 def siftDict(dictionary, searchList, searchParam) :
     for key, value in dictionary.items() :
         # Check Key
-        if searchParam in key :
+        if ((searchParam in key) and ("http" in key)) :
             searchList.append(key)
         # Need another recursive call
         if isinstance(value, list) :
             searchList + siftList(value, searchList, searchParam)
         elif isinstance(value, dict) :
             searchList + siftDict(value, searchList, searchParam)
-        # Single item
-        if searchParam in key :
-            searchList.append(key)
-        elif searchParam in value :
+        # Single item check value
+        if ((searchParam in value) and ("http" in value)) :
             searchList.append(value)
-    searchList = list(set(searchList))
     return searchList
     
 # Works on lists
@@ -30,19 +27,19 @@ def siftList(testList, searchList, searchParam) :
         elif isinstance(item, dict) :
             searchList + siftDict(item, searchList, searchParam)
         # Single item found
-        if searchParam in item :
+        if ((searchParam in item) and ("http" in item)) :
             searchList.append(item)
     return searchList                              
     
-def extract(source, searchParamList) :
+def extract_urls(source, searchParamList) :
     search_list = []
     for searchParam in searchParamList:
         search_list + siftDict(source, [], searchParam)
-    # Returns searchParam1 OR searchParam2 OR ... (NEED TO AND)
-    # Achive by filtering all results which dont contain ALL search parameters
-    for result in search_list :
-        for param in searchParamList :
-            if param not in result :
-                search_list.remove(result)
+        print(search_list)
+    # Returns searchParam1 OR searchParam2 OR ... 
+    # Filter for just URLS : FIXED DO COMPARISON WHILE SEARCHING
+    #for result in search_list :
+    #    if 'http' not in result :
+    #        search_list.remove(result)
     # Eliminate duplicates
-    return list(set(search_list))
+    return search_list
