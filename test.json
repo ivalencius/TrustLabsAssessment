@@ -1,0 +1,18 @@
+{"Container":
+{"Filename":"CC-MAIN-20201123153826-20201123183826-00637.warc.gz",
+    "Compressed":true,"Offset":"0","Gzip-Metadata":{"Deflate-Length":"487","Header-Length":"10","Footer-Length":"8","Inflated-CRC":"-944827066","Inflated-Length":"775"}},
+    "Envelope":{
+        "Payload-Metadata":{
+            "Actual-Content-Length":"512",
+            "Block-Digest":"sha1:LHSTSWNIIRNXYHWQQ53QW7Z4VXQXQEPO",
+            "Trailing-Slop-Length":"0",
+            "Headers-Corrupt":true, "Actual-Content-Type":"application/warc-fields","WARC-Info-Metadata":{"isPartOf":"CC-MAIN-2020-50","publisher":"Common Crawl","description":"Wide crawl of the web for November/December 2020","operator":"Common Crawl Admin (info@commoncrawl.org)","hostname":"ip-10-67-67-245.ec2.internal","software":"Apache Nutch 1.17 (modified, https://github.com/commoncrawl/nutch/)","robots":"checked via crawler-commons 1.2-SNAPSHOT (https://github.com/crawler-commons/crawler-commons)","format":"WARC File Format 1.1"}}
+            ,"Format":"WARC",
+            "WARC-Header-Length":"259",
+            "WARC-Header-Metadata":{
+                "WARC-Type":"warcinfo",
+                "WARC-Date":"2020-11-23T15:38:26Z",
+                "WARC-Record-ID":"<urn:uuid:f4af5b1b-5172-4cfd-b4db-84e334c47ecf>",
+                "Content-Length":"512",
+                "Content-Type":"application/warc-fields",
+                "WARC-Filename":"CC-MAIN-20201123153826-20201123183826-00637.warc.gz"}}}

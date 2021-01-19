@@ -11,11 +11,9 @@ import json5.parser
 #    "(youtu\.be/|youtube\.com/(watch\?(.*\&)?v=|(embed|v)/))([^?&\"'>]+)"
 #)
 
-urlList = []
-
 # Will find urls containing the following phrases
-searchParamCovid = ["covid", "corona","Covid","Corona", "新冠病毒"] # JSON search file is case sensistive
-searchParamEcon  = ["jobs", "economy", "Economy", "Jobs", "病毒"]
+searchParamCovid = ["covid", "corona","Covid","Corona","virus", "新冠病毒"] # JSON search file is case sensistive
+searchParamEcon  = ["jobs", "economy", "Economy", "Jobs","market","stock" "病毒"]
 
 
 # Searching the 72k files in the NOV/DEC Bucket --> downloaded this file for testing
@@ -26,13 +24,26 @@ if len(sys.argv) > 1:
 
 # Loop through .warc.wat file (here just opening already downloaded file, switch to parse through fill .gz file later)
 # Have the sense this might be inefficient (126k lines means 126k comparison)
-with open("CC-MAIN-20201123153826-20201123183826-00637.warc.wat", "r", encoding="utf-8") as wat :
+with open("CC-MAIN-20201123153826-20201123183826-00001.warc.wat", "r", encoding="utf-8") as wat :
+    urlList = []
     for line in wat :
-        if "{" == line[:1] :
-            obj = json.dumps(line)
+        if "{" == line[:1] : # Line contains JSON
+            print("Still running")
+            obj = json.loads(line)
             cov_list = set(e.extract_urls(obj, searchParamCovid))
             eco_list = set(e.extract_urls(obj, searchParamEcon))
-            urlList + list(cov_list.intersection(eco_list)) # Need covid AND economy (Intersection of two sets)
+            urlList = list(set(urlList + list(cov_list.intersection(eco_list)))) # Need covid AND economy (Intersection of two sets)p
+            #print(urlList)
+            if len(urlList) > 1000 :
+                break
+
+# Print Results to a .txt file
+with open("urls.txt", "w", encoding="utf-8") as outfile :
+    outfile.write("===LIST OF URLS BY ILAN VALENCIUS ===")
+    count = 1
+    for url in urlList :
+        outfile.write("\n"+str(count)+ "\t :\t " + url)
+        count = count +1
 
 #stream = None
 #if file_name.startswith("http://") or file_name.startswith("https://"):

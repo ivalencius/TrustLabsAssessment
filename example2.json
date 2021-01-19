@@ -1,0 +1,15 @@
+{
+    "apiUrl":"https://api.ft.com/example/83example74-3c9b-11ea-a01a-example547046735",
+    "title": {
+        "title": "Example title example title example title"
+    },
+    "lifecycle": {
+        "initialPublishDateTime":"2020-01-21T22:54:57Z",
+        "lastPublishDateTime":"2020-01-21T23:38:19Z"
+    },
+    "location":{
+        "uri":"https://www.ft.com/exampleurl/83example74-3c9b-11ea-a01a-example547046735",
+        "test": {"test2": "http.com"}
+    },
+    "summary": "..."
+}
